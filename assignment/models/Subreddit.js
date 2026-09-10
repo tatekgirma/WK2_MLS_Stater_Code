@@ -1,25 +1,11 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
+const { Schema } = mongoose;
 
-const SubredditSchema = new mongoose.Schema({
-    name: { 
-        type: String, 
-        required: true, 
-        unique: true 
-    },
-    description: { 
-        type: String 
-    },
-    author: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    },
-    createdAt: {
-        type: Date,
-        required: true
-    }
+const SubredditSchema = new Schema({
+  name: { type: String, required: true, unique: true },
+  description: { type: String },
+  author: { type: Schema.Types.ObjectId, ref: "User", required: true },
+  createdAt: { type: Date, required: true },
 });
 
-const Subreddit = mongoose.model('Subreddit', SubredditSchema);
-
-export default Subreddit;
+export default mongoose.model("Subreddit", SubredditSchema);
